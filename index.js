@@ -12,10 +12,13 @@ const redisConnectionOptions = {
 
 const client = redis.createClient();
 
-/*client.setAsync('somekey', 'somevalue').then((response) => {
+client.psetexAsync('somekey', 1999, 'somevalue').then((response) => {
     console.log(response);
-});*/
-
-client.getAsync('somekey').then((response) => {
+    return client.getAsync('somekey');
+}).then((response) => {
     console.log(response);
+    return client.pttlAsync('somekey');
+}).then((expiry) => {
+    console.log(`expiry ${expiry}`);
 });
+
