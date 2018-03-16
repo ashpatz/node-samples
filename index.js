@@ -12,11 +12,19 @@ const redisConnectionOptions = {
 
 const client = redis.createClient();
 
-client.psetexAsync('somekey', 1999, 'somevalue').then((response) => {
-    console.log(response);
-    return client.getAsync('somekey');
+return client.existsAsync('somekey').then((exists) => {
+    console.log(`exists ${exists}`);
+    if(exists) {
+        return client.getAsync('somekey');
+    } else {
+        console.log(`setting key`);
+        return client.psetexAsync('somekey', 30000, 'somevalue').then((response) => {
+            console.log(`set response ${response}`);
+            return client.getAsync('somekey');
+        });
+    }
 }).then((response) => {
-    console.log(response);
+    console.log(`getAsync response ${response}`);
     return client.pttlAsync('somekey');
 }).then((expiry) => {
     console.log(`expiry ${expiry}`);
