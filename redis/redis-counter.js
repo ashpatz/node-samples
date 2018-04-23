@@ -1,13 +1,13 @@
 const client = require('./redis-base').redisClient;
 
-// const key = 'limit.concurrency.3010000024';
-const key = 'quota.daily.3010000024';
+const key = 'limit.concurrency.3010000024.qa';
+// const key = 'quota.daily.3010000024.qa';
 
 //For BE11205048, BE11205049
-// const key = 'quota.daily.3011205048';
+// const key = 'quota.daily.3011205048.qa';
 
 //For BE11205050
-// const key = 'quota.daily.3011204756';
+// const key = 'quota.daily.3011204756.qa';
 
 
 /*client.existsAsync(key).then((exists) => {

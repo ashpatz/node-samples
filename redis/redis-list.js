@@ -1,16 +1,16 @@
 const client = require('./redis-base').redisClient;
 
-// const key = 'limit.concurrency.3010000024';
-// const key = 'quota.daily.3010000024';
+const key = 'limit.concurrency.3010000024.qa';
+// const key = 'quota.daily.3010000024.qa';
 
 //For BE11205048, BE11205049
-// const key = 'quota.daily.3011205048';
+// const key = 'quota.daily.3011205048.qa';
 
 //For BE11205050
-const key = 'quota.daily.3011204756';
+// const key = 'quota.daily.3011204756.qa';
 
 
-client.existsAsync(key).then((exists) => {
+/*client.existsAsync(key).then((exists) => {
     console.log(`key ${key} exists: ${exists}`);
     return client.pttlAsync(key)
 }).then((ttl) => {
@@ -27,9 +27,11 @@ client.existsAsync(key).then((exists) => {
     return client.delAsync(key);
 }).then((removedCount) => {
     console.log(`removedCount : ${removedCount}`);
-});
+}).then(() => {
+    process.exit(0);
+});*/
 
-/*client.existsAsync(key).then((exists) => {
+client.existsAsync(key).then((exists) => {
     console.log(`key ${key} exists: ${exists}`);
     return client.pttlAsync(key)
 }).then((ttl) => {
@@ -43,5 +45,10 @@ client.existsAsync(key).then((exists) => {
     return client.llenAsync(key);
 }).then((count) => {
     console.log(`count: ${count}`);
-});*/
+}).then(() => {
+    process.exit(0);
+}).catch((err) => {
+    console.log(err);
+    process.exit(-1);
+});
 
