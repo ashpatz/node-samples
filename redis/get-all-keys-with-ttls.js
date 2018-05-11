@@ -10,8 +10,8 @@ client.keysAsync('*').then((keys) => {
         getTtls(keys)
     ]);
 }).then(([keys, values, ttls]) => {
-    return keys.map((k, i) => ({
-        key: keys[i], ttl: `${ttls[i]} ms`, expiryTime: `${new Date(Date.now()+ttls[i])}`, value: values[i]
+    return keys.map((key, i) => ({
+        key: key, ttl: `${ttls[i]} ms`, expiryTime: `${new Date(Date.now()+ttls[i])}`, value: values[i]
     }));
 }).then((data) => {
     console.table(data);
