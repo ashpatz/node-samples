@@ -28,7 +28,8 @@ module.exports.pushAndFetch = (request, response) => {
         response
             .status(200)
             .set('x-response-time', endTime - startTime)
-            .send();
+            .set('content-type', 'application/json')
+            .send(queryResponse);
     }).catch((err) => {
         log(correlationId, err);
         response
