@@ -34,7 +34,7 @@ module.exports.pushAndFetch = (request, response) => {
         log(correlationId, err);
         response
             .status(500)
-            .send(queryResponse);
+            .send();
     });
 };
 
