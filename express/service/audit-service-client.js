@@ -17,7 +17,7 @@ module.exports.pushAndFetch = (request, response) => {
         correlationId: correlationId
     };
     const startTime = Date.now();
-    return kinesisClient.putRecord(JSON.stringify(postData)).then((kinesisResponse) => {
+    return kinesisClient.putRecords(JSON.stringify(postData)).then((kinesisResponse) => {
         log(correlationId, `kinesisResponse :: ${JSON.stringify(kinesisResponse)}`);
         log(correlationId, `Sleeping for 5 seconds`);
         return sleep(5000);
@@ -39,13 +39,14 @@ module.exports.pushAndFetch = (request, response) => {
 };
 
 const waitAndFetch = (correlationId) => {
-    log(correlationId, `Waiting 1 sec`);
+    // log(correlationId, `Waiting 1 sec`);
     return sleep(1000).then(()=> {
         return elasticsearchClient.query(correlationId);
     }).then((queryResponse) => {
         if(validator.isNil(queryResponse)) {
             return waitAndFetch(correlationId);
         } else {
+            log(correlationId, queryResponse);
             return queryResponse;
         }
     });

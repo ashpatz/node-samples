@@ -14,3 +14,17 @@ module.exports.putRecord = (postData) => {
     return kinesis.putRecord(params).promise();
 };
 
+module.exports.putRecords = (postData) => {
+
+    const params = {
+        Records : [
+            {
+                Data: new Buffer(postData),
+                PartitionKey: 'STRING_VALUE',
+            }
+        ],
+        StreamName: 'api-platform-audit-stream-dev-west'
+    };
+
+    return kinesis.putRecords(params).promise();
+};
