@@ -26,6 +26,17 @@ module.exports.query = (queryString) => {
     });
 };
 
+module.exports.addDocument = (body, correlationId) => {
+    return client.create(
+        {
+            index: 'platform_audit',
+            type: 'platform_audit',
+            id: correlationId,
+            body : JSON.stringify(body)
+        }
+    )
+};
+
 
 // q: '\"dummy test audit service : us-east-1 :  2018-05-30T17:53:02.606Z\"'
 

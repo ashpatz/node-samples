@@ -2,7 +2,6 @@
 
 const kinesisClient = require('../../aws/kinesis-client');
 const elasticsearchClient = require('../../elasticsearch/es-client');
-const consoleLog = require('../../logger/logger').consoleLog;
 const log = require('../../logger/logger').log;
 const sleep = require('../../utils/sleep').sleep;
 const validator = require('../../utils/validator');
@@ -36,6 +35,27 @@ module.exports.pushAndFetch = (request, response) => {
             .status(500)
             .send();
     });
+};
+
+module.exports.createInES = (request, response) => {
+    const correlationId = uuid4();
+    const postData = {
+        clientId : '3011136764',
+        instanceId: 'BE11158785',
+        correlationId: correlationId
+    };
+     return elasticsearchClient.addDocument(postData, correlationId).then((esResponse) => {
+         log(correlationId, JSON.stringify(esResponse));
+         response
+             .status(200)
+             .set('content-type', 'application/json')
+             .send(esResponse);
+     }).catch((err) => {
+         log(correlationId, err);
+         response
+             .status(500)
+             .send();
+     });
 };
 
 const waitAndFetch = (correlationId) => {
