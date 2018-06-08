@@ -13,10 +13,10 @@ module.exports.query = (queryString) => {
         q : `\"${queryString}\"`
     }).then((data) => {
         // console.log(data);
-        // consoleLog(JSON.stringify(data.hits));
+        consoleLog(JSON.stringify(data.hits));
         if(data.hits.hits.length > 0) {
             // consoleLog(JSON.stringify(data.hits.hits));
-            return data.hits.hits[0]._source.message;
+            return data.hits.hits[0]._source;
         } else {
             return null;
         }
