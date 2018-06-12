@@ -1,8 +1,8 @@
 'use strict';
 
-const AWS = require('aws-sdk');
-const kinesis = new AWS.Kinesis({region: 'us-west-2'});
-const STREAM_NAME = 'api-platform-audit-stream-dev-west';
+const AWS = require('./aws-config').AWS;
+const kinesis = new AWS.Kinesis();
+const STREAM_NAME = 'api-platform-audit-stream-dev-east';
 // const STREAM_NAME = 'kclnodejssample';
 
 module.exports.putRecord = (postData) => {
