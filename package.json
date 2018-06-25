@@ -5,6 +5,7 @@
     "aws-sdk": "^2.249.1",
     "bluebird": "^3.4.6",
     "console.table": "^0.10.0",
+    "compression": "^1.7.1",
     "elasticsearch": "^15.0.0",
     "express": "^4.16.2",
     "redis": "^2.8.0",
