@@ -1,6 +1,13 @@
 {
   "name": "node-samples",
   "version": "0.0.1",
+  "devDependencies": {
+    "loadtest": "^3.0.3",
+    "release-it": "~7.5.0"
+  },
+  "scripts": {
+    "release": "release-it"
+  },
   "dependencies": {
     "aws-sdk": "^2.249.1",
     "bluebird": "^3.4.6",
