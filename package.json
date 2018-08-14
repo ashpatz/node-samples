@@ -1,6 +1,6 @@
 {
   "name": "node-samples",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "devDependencies": {
     "loadtest": "^3.0.3",
     "release-it": "~7.5.0"
