@@ -2,8 +2,7 @@
   "name": "node-samples",
   "version": "0.1.1",
   "devDependencies": {
-    "loadtest": "^3.0.3",
-    "release-it": "~7.5.0"
+    "assert": "^2.0.0"
   },
   "scripts": {
     "release": "release-it"
