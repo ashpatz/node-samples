@@ -3,6 +3,8 @@
   "version": "0.1.1",
   "devDependencies": {
     "loadtest": "^3.0.3",
+    "mocha": "^6.0.2",
+    "mockery": "^2.1.0",
     "release-it": "~7.5.0"
   },
   "scripts": {
@@ -15,10 +17,13 @@
     "compression": "^1.7.1",
     "elasticsearch": "^15.0.0",
     "express": "^4.16.2",
+    "node-fetch": "^2.3.0",
     "redis": "^2.8.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
+    "sleep-promise": "^8.0.1",
     "type-detect": "^4.0.8",
-    "uuid": "^3.2.1"
+    "uuid": "^3.2.1",
+    "winston": "^3.2.1"
   }
 }
