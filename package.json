@@ -2,6 +2,7 @@
   "name": "node-samples",
   "version": "0.1.1",
   "devDependencies": {
+    "assert": "^2.0.0",
     "loadtest": "^3.0.3",
     "mocha": "^6.0.2",
     "mockery": "^2.1.0",
